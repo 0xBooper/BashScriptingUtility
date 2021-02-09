@@ -106,7 +106,7 @@ case $USERINPUT in
 	;;
 
 	*)
-
+                cd BashUtility
 		echo -n "Wrong input.."
 		
                 chmod +x rebash.sh
