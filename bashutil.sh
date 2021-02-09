@@ -106,9 +106,11 @@ case $USERINPUT in
 	;;
 
 	*)
-
+                cd BashUtility
 		echo -n "Wrong input.."
-
+		
+                chmod +x rebash.sh
+                ./rebash.sh
 	;;
 
 esac
