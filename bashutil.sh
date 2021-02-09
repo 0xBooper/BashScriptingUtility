@@ -7,10 +7,10 @@ function check () {
 			createBash
 		;;
 		B | b)
-			bashB
+			removeBash
 		;;
 		C | c)
-			bashC
+			createBashNS
 		;;
 		*)
 			cd BashUtility
