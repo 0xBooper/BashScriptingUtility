@@ -1,12 +1,11 @@
 
-# Version 3, uploaded Mon, Feb. 8, 2021, 11:00 PM CST
+# Version 1.4, uploaded Tues., Feb. 9, 2021, 6:13 CST
+# [Bugfix 6 of bashutil.sh]
 ## Uploaded by 0xBooper
 
-### Details of version:
+### Details of version/bugfix:
 ```
-  1: Fixed removing bash and no-setup creation of bash scripts not working
+  1. Fixed no-setup bash not working
 ```
 ### Version description:
-This new update is a bugfix that updates a critical bug in the bashutil.sh file that won't let you use
-the remove bash script and the no setup bash script creation features.
-
+Fixed the no-setup option of creating bash scripts not working.
