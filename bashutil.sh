@@ -59,7 +59,7 @@ function removeBash () {
 #Function for creating bash scripts with no setup
 function createBashNS () {
 	echo "Please enter the name of the script with the .sh extension."
-	read $FILE_NAME
+	read FILE_NAME
 	echo "Warning: File will be made in the root directory."
 	echo "Creating..."
 	touch $FILE_NAME &&  chmod +x $FILE_NAME
@@ -73,7 +73,7 @@ function createBashNS () {
 }
 
 
-#Run-up program:
+#Start-up program:
 cd ~
 echo "---Welcome to the Bash Script Utility----"
 echo "---Please enter what you wish to do.-----"
