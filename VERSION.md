@@ -1,11 +1,12 @@
 
-# Version 1.4, uploaded Tues., Feb. 9, 2021, 6:13 CST
-# [Bugfix 6 of bashutil.sh]
+# Version 1.4, uploaded Wednesday, Feb.10, 2021 at 5:53 CST
 ## Uploaded by 0xBooper
 
-### Details of version/bugfix:
+### Details of version:
 ```
-  1. Fixed no-setup bash not working
+  1. Added setup options for an existing file.
+  2. Added a exit feature
 ```
 ### Version description:
-Fixed the no-setup option of creating bash scripts not working.
+Added setup options for existing files and also added the ability
+to exit.

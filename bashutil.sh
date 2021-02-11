@@ -12,6 +12,14 @@ function check () {
 		C | c)
 			createBashNS
 		;;
+		E | e)
+			echo "Exitting.."
+			exit 0
+		;;
+		S | s)
+			moreSetup
+		;;
+
 		*)
 			cd BashUtility
 			echo "Wrong input.."
@@ -39,6 +47,53 @@ function createBash () {
 }
 
 
+function moreSetup () {
+	echo "First, input the file you have made."
+	local USERFILE="A"
+	read USERFILE
+	USERFILETEXT=$(cat $USERFILE)
+	if [ $USERFILETEXT == "#!/bin/bash" ]
+	then
+		echo "Select what setup option you want to do: "
+		echo "Setup with variables ready [V]"
+		local USERINPUT="A"
+		read USERINPUT
+		case $USERINPUT in
+			V | v)
+			echo "Input the name of the variable"
+			read VARNAME
+			bash -c "printf '\n%s\n' >> $USERFILE"
+			echo -n $VARNAME >> $USERFILE
+			echo -n "=" >> $USERFILE
+			echo "Input the value of the variable."
+			read VARVALUE
+			echo -n $VARVALUE >> $USERFILE
+			echo "The new file looks like: "
+			cat $USERFILE
+			;;
+		esac
+	else
+		echo "#!/bin/bash" >  $USERFILE
+		echo "Select what setup option you want to do: "
+		echo "Setup with variables ready [V]"
+		local USERINPUT="A"
+		read USERINPUT
+		case $USERINPUT in
+			V | v)
+			echo "Input the name of the variable"
+			read VARNAME
+			bash -c "printf '\n%s\n' >> $USERFILE"
+			echo -n $VARNAME >> $USERFILE
+			echo -n "=" >> $USERFILE
+			echo "Input the value of the variable."
+			read VARVALUE
+			echo -n $VARVALUE >> $USERFILE
+			echo "The new file looks like: "
+			cat $USERFILE
+			;;
+		esac
+	fi
+}
 #Function for removing bash scripts
 function removeBash () {
 	echo "Please enter the name of the script with the .sh extension."
@@ -80,7 +135,8 @@ echo "---Please enter what you wish to do.-----"
 echo "-------Create a bash script [A]----------"
 echo "-------Remove a bash script [B]----------"
 echo "--Create a bash script with no setup [C]-"
+echo "--Setup options for an existing file [S]-"
+echo "--------------Exit [E]-------------------"
 
 read USERINPUT
 check $USERINPUT
-
