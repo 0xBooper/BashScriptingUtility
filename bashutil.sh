@@ -20,6 +20,8 @@ function check () {
 			moreSetup
 		;;
 
+		I | i)
+			info
 		*)
 			cd BashUtility
 			echo "Wrong input.."
@@ -27,6 +29,15 @@ function check () {
 		;;
 	esac
 }
+
+#Function about.. the information about this utility
+function info () {
+	echo "This utility is currently version 1.4.1."
+	echo "For further info on this utility, see the VERSION.md file."
+	echo "Also, thanks for using this utility!"
+	echo "Made by 0xBooper, for people who like being lazy and using a utility for creating files. :D"
+}
+
 
 #Function for creating bash scripts with setup
 function createBash () {
@@ -46,54 +57,63 @@ function createBash () {
 	fi
 }
 
-
+# Function for setting up existing files
 function moreSetup () {
 	echo "First, input the file you have made."
 	local USERFILE="A"
 	read USERFILE
-	USERFILETEXT=$(cat $USERFILE)
-	if [ $USERFILETEXT == "#!/bin/bash" ]
+	if [ -e $USERFILE ]
 	then
-		echo "Select what setup option you want to do: "
-		echo "Setup with variables ready [V]"
-		local USERINPUT="A"
-		read USERINPUT
-		case $USERINPUT in
-			V | v)
-			echo "Input the name of the variable"
-			read VARNAME
-			bash -c "printf '\n%s\n' >> $USERFILE"
-			echo -n $VARNAME >> $USERFILE
-			echo -n "=" >> $USERFILE
-			echo "Input the value of the variable."
-			read VARVALUE
-			echo -n $VARVALUE >> $USERFILE
-			echo "The new file looks like: "
-			cat $USERFILE
-			;;
-		esac
+
+		USERFILETEXT=$(cat $USERFILE)
+		if [ $USERFILETEXT == "#!/bin/bash" ]
+		then
+			echo "Select what setup option you want to do: "
+			echo "Setup with variables ready [V]"
+			local USERINPUT="A"
+			read USERINPUT
+			case $USERINPUT in
+				V | v)
+				echo "Input the name of the variable"
+				read VARNAME
+				bash -c "printf '\n%s\n' >> $USERFILE"
+				echo -n $VARNAME >> $USERFILE
+				echo -n "=" >> $USERFILE
+				echo "Input the value of the variable."
+				read VARVALUE
+				echo -n $VARVALUE >> $USERFILE
+				echo "The new file looks like: "
+				cat $USERFILE
+				;;
+			esac
+		else
+			echo "#!/bin/bash" >  $USERFILE
+			echo "Select what setup option you want to do: "
+			echo "Setup with variables ready [V]"
+			local USERINPUT="FLOOP!"
+			read USERINPUT
+			case $USERINPUT in
+				V | v)
+				echo "Input the name of the variable"
+				read VARNAME
+				bash -c "printf '\n%s\n' >> $USERFILE"
+				echo -n $VARNAME >> $USERFILE
+				echo -n "=" >> $USERFILE
+				echo "Input the value of the variable."
+				read VARVALUE
+				echo -n $VARVALUE >> $USERFILE
+				echo "The new file looks like: "
+				cat $USERFILE
+				;;
+			esac
+		fi
 	else
-		echo "#!/bin/bash" >  $USERFILE
-		echo "Select what setup option you want to do: "
-		echo "Setup with variables ready [V]"
-		local USERINPUT="A"
-		read USERINPUT
-		case $USERINPUT in
-			V | v)
-			echo "Input the name of the variable"
-			read VARNAME
-			bash -c "printf '\n%s\n' >> $USERFILE"
-			echo -n $VARNAME >> $USERFILE
-			echo -n "=" >> $USERFILE
-			echo "Input the value of the variable."
-			read VARVALUE
-			echo -n $VARVALUE >> $USERFILE
-			echo "The new file looks like: "
-			cat $USERFILE
-			;;
-		esac
+		echo "Your file is not in the root directory, "
+		echo "your file does not exist."
+
 	fi
 }
+
 #Function for removing bash scripts
 function removeBash () {
 	echo "Please enter the name of the script with the .sh extension."
@@ -102,7 +122,7 @@ function removeBash () {
 	then
 		echo "Warning: Your file MUST be in the root directory first."
 		rm $FILE_NAME
-		echo -n "Your script has been deleted."
+		echo "Your script has been deleted."
 		echo "Thanks for using our services!"
 	else
 		echo "Error: File is not in the root directory. Please move it to the root directory ( ~ )"
@@ -136,7 +156,9 @@ echo "-------Create a bash script [A]----------"
 echo "-------Remove a bash script [B]----------"
 echo "--Create a bash script with no setup [C]-"
 echo "--Setup options for an existing file [S]-"
+echo "-----Information about this utility [I]--"
 echo "--------------Exit [E]-------------------"
 
 read USERINPUT
 check $USERINPUT
+
