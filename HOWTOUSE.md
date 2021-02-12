@@ -1,4 +1,4 @@
-#How to use:
+# How to use:
 
 Go to whatever directory you installed this in
 
