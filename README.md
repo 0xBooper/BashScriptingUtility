@@ -23,7 +23,9 @@ Description: (desc go here)
 
 --------------
 *: A critical update can also be specified with "critical bugfix" or whatever
+
 A description is only required to commits for the CODE files (bashutil.sh and rebash.sh).
+
 All other commits relating to other files do not require a description.
 
 
