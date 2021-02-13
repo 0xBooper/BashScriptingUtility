@@ -17,5 +17,10 @@ Thanks for using the program!
 ```
 
 # How to update:
-Delete all the files in the BashScriptingUtility directory, and clone this repository again by running `git clone https://github.com/0xBooper/BashScriptingUtility`.
+First, cd into the BashScriptingUtility.
+
+Second, remove everything by running `rm -rf *`
+
+Third, go back to the directory you want to install this new utility in, and run the command, `git clone https://github.com/0xBooper/BashScriptingUtility`
+
 Always make sure to check if there are any updates.
