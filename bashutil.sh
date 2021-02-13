@@ -22,7 +22,8 @@ function check () {
 
 		I | i)
 			info
-		*)
+		;;
+                *)
 			cd BashUtility
 			echo "Wrong input.."
 			bash rebash.sh
