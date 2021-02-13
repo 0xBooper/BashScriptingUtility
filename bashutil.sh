@@ -33,7 +33,7 @@ function check () {
 
 #Function about.. the information about this utility
 function info () {
-	echo "This utility is currently version 1.4.1."
+	echo "This utility is currently version 1.4.1-C."
 	echo "For further info on this utility, see the VERSION.md file."
 	echo "Also, thanks for using this utility!"
 	echo "Made by 0xBooper, for people who like being lazy and using a utility for creating files. :D"
