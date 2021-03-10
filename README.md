@@ -1,33 +1,20 @@
-# BashUtility
+<h1 text-align="center">Bash Scripting Utility</h1>
 
-## IMPORTANT: FILES WILL BE MADE IN THE ROOT DIRECTORY OF YOUR USER.
-## IMPORTANT: FILES ALSO MUST BE IN THE ROOT DIRECTORY FOR REMOVING AND SETTING UP FILES
+## What is it?
 
-A utility made for creating, removing and setting up ready to use bash scripts.
+Bash Scripting Utility is a utility fully written in bash. It's a utility made for quickly setting up bash scripts for scripting, and also adding a few variables.
 
-Created by 0xBooper, for use on a linux bash shell.
+## Installation
 
-Version 1.4.1-C, for more information read VERSION.md
+Clone the git repository by doing `git clone https://github.com/0xBooper/BashScriptingUtility.git` in your terminal.
 
-For instructions on how to use, read HOWTOUSE.md
+Cd into the directory of the repository and run the following commands.
 
--------------
+`chmod +x bashutil.sh`
 
-P.S: If you want to edit this project, here is the format for the commit description:
+## Running it
 
--------------
+To run it, go to the repository's directory and run
 
-Update Type: (Minor/Bugfix/Feature Addition/Critical*)
+`./bashutil.sh`
 
-Description: (desc go here)
-
---------------
-*: A critical update can also be specified with "critical bugfix" or whatever
-
-A description is only required to commits for the CODE files (bashutil.sh and rebash.sh).
-
-All other commits relating to other files do not require a description.
-
-
-
-#opensource4life
