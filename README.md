@@ -19,12 +19,10 @@ To run it, go to the repository's directory and run
 `./bashutil.sh`
 
 ## Updating it
-First, cd into the BashScriptingUtility.
 
-Second, remove everything by running `rm -rf *`
+Go into the directory the repository is located, and run: `git pull`.
 
-Third, go back to the directory you want to install this new utility in, and run the command, `git clone https://github.com/0xBooper/BashScriptingUtility`
+## Info
 
-Always make sure to check if there are any updates.
-
+Version 1.5 (Major)
 
