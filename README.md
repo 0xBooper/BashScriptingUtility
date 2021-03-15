@@ -10,21 +10,17 @@ Clone the git repository by doing `git clone https://github.com/0xBooper/BashScr
 
 Cd into the directory of the repository and run the following commands.
 
-`chmod +x bashutil.sh`
+`chmod +x install.sh`
+`./install.sh`
+
+Then, follow the onscreen commands.
 
 ## Running it
 
-To run it, go to the repository's directory and run
-
-`./bashutil.sh`
+To see how to run it, run `bashutil --help`
 
 ## Updating it
-First, cd into the BashScriptingUtility.
 
-Second, remove everything by running `rm -rf *`
-
-Third, go back to the directory you want to install this new utility in, and run the command, `git clone https://github.com/0xBooper/BashScriptingUtility`
-
-Always make sure to check if there are any updates.
+Go into the directory the repository is located, and run: `git pull`.
 
 

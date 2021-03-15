@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# Actual functions
+
+function setup () {
+        cd ~
+        echo "Input the filename with .sh extension."
+        read FILE
+        touch $FILE
+        echo "#!/bin/bash" > $FILE
+        echo "File made in the ~ directory."
+        exit 0
+}
+
+# Handles options and arguments
+
+## Usage variable
+usage=" bashutil [OPTION]...
+
+        Warning: Files will be made in the ~ directory.
+
+        Options:
+                --help: Displays this screen.
+                --version: Shows current version.
+                --s: Creates a bash script that's setup."
+
+## Version variable.
+ver="
+Version 1.5.
+"
+
+for arg
+do
+        case "$arg" in
+                --help) printf '%s\n' "$usage" && exit 0;;
+                --version) printf '%s\n' "$ver" && exit 0;;
+                --s) setup;;
+        esac
+done
+
+if test $# -eq 0; then
+        echo "You must have atleast one option. Run bashutil --help for more info."
+        exit 1
+fi
