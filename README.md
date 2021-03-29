@@ -1,5 +1,3 @@
-<h1 text-align="center">Bash Scripting Utility</h1>
-
 ## What is it?
 
 Bash Scripting Utility is a utility fully written in bash. It's a utility made for quickly setting up bash scripts for scripting, and also adding a few variables.
@@ -24,4 +22,4 @@ To see how to run it, run `bashutil --help`
 Go into the directory the repository is located, and run: `git pull origin primary`
 
 ## Current version
-Version 1.5.2
+Version 1.5.3
