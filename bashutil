@@ -4,8 +4,9 @@
 
 function setup () {
         cd ~
-        echo "Input the filename with .sh extension."
+        echo "Input the filename without any extension."
         read FILE
+	FILE+=".sh"
         touch $FILE
         echo "#!/bin/bash" > $FILE
 	chmod +x $FILE
