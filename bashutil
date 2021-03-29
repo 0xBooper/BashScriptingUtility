@@ -8,8 +8,9 @@ function setup () {
         read FILE
         touch $FILE
         echo "#!/bin/bash" > $FILE
-        echo "File made in the ~ directory."
-        exit 0
+	chmod +x $FILE
+	[ -x "$FILE" ] && echo "File successfully made."; exit 0
+	[ ! -x "$FILE" ] && echo "File wasn't made due to error."; exit 1
 }
 
 # Handles options and arguments
@@ -20,25 +21,21 @@ usage=" bashutil [OPTION]...
         Warning: Files will be made in the ~ directory.
 
         Options:
-                --help: Displays this screen.
-                --version: Shows current version.
-                --s: Creates a bash script that's setup."
 
+		-h or --help: Shows this screen.
+		-v or --version: Shows current version.
+		-s or --setup: Creates and sets up a bash script
+"
 ## Version variable.
 ver="
 Version 1.5.
 "
 
-for arg
-do
-        case "$arg" in
-                --help) printf '%s\n' "$usage" && exit 0;;
-                --version) printf '%s\n' "$ver" && exit 0;;
-                --s) setup;;
-        esac
-done
+[ -z "$1" ] && echo "You must have atleast 1 option. Run bashutil --help for info."
 
-if test $# -eq 0; then
-        echo "You must have atleast one option. Run bashutil --help for more info."
-        exit 1
-fi
+case "$1" in
+	-h|--help) printf '%s\n' "$usage"; exit 0;;
+	-v|--version) printf '%s\n' "$ver"; exit 0;;
+	-s|--setup) setup;;
+	*) echo "Unknown option."; exit 1;;
+esac
