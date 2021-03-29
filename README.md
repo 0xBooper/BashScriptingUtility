@@ -21,6 +21,7 @@ To see how to run it, run `bashutil --help`
 
 ## Updating it
 
-Go into the directory the repository is located, and run: `git pull`.
+Go into the directory the repository is located, and run: `git pull origin primary`
 
-
+## Current version
+Version 1.5.2
