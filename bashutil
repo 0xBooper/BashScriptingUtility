@@ -28,14 +28,12 @@ usage=" bashutil [OPTION]...
 		-s or --setup: Creates and sets up a bash script
 "
 
-## Latest version variable
-LATESTVER=$(curl https://github.com/0xBooper/BashScriptingUtility/currentver)
 
 ## Version variable.
 ver="
 Version 1.5.3
 
-Latest version is $LATESTVER
+Latest version is $(curl https://raw.githubusercontent.com/0xBooper/BashScriptingUtility/primary/currentver)
 "
 
 [ -z "$1" ] && echo "You must have atleast 1 option. Run bashutil --help for info."

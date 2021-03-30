@@ -2,7 +2,7 @@
 
 function ins () {
         echo "Installing..."
-        sudo mv bashutil /usr/bin
+        sudo mv bashutil /bin
         echo "Installed."
         echo "Run bashutil --help to see how to use it."
         exit 0
