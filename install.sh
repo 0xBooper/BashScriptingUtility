@@ -1,11 +1,28 @@
 #!/bin/bash
 
+function success () {
+	echo "Installed."                                                         echo "Run bashutil --help to see how to use it."
+	cd ~
+	exit 0
+}
+
+function fail () {
+	echo "Failed to install."
+	cd ~
+	exit 1
+}
+
 function ins () {
         echo "Installing..."
-        sudo mv bashutil /bin
-        echo "Installed."
-        echo "Run bashutil --help to see how to use it."
-        exit 0
+        cp bashutil /usr/bin
+	echo "Checking if it worked.."
+	cd /usr/bin
+	chmod +x bashutil
+	if [ -x bashutil ]; then
+		success
+	else
+		fail
+	fi
 }
 
 function ret () {
