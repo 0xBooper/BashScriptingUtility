@@ -1,9 +1,11 @@
-# Version 1.5.3, uploaded 6:23 PM CDT, March 29, 2021.
+# Version 1.5.4-C, uploaded on XXX XX XXXX
 ## Uploaded by 0xBooper
 
 ### Details of version:
 ```
-	1. Added uninstaller.
+	1. Added a check to see if the install worked in the installer.
+	2. (Critical) Fixed uninstaller not working
+	3. Fixed bashutil always running curl.
 ```
 ### Update log:
 ```
@@ -15,6 +17,7 @@
  Version 1.5.2: Made code look better, added a check if the script was made
  correctly.
  Version 1.5.3: Added uninstaller.
+ Versiin 1.5.4-C (Critical): Added a check in the installer, fixed uninstaller not working (critical), and fixed bashutil always running curl.
 ```
 
 P.S: Update log starts at version 1.4 because I forgot to start it in earlier versions.
