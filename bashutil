@@ -28,19 +28,24 @@ usage=" bashutil [OPTION]...
 		-s or --setup: Creates and sets up a bash script
 "
 
+## Latest Version getter
+function getlatestver () {
+	latestver=$(curl https://raw.githubusercontent.com/0xBooper/BashScriptingUtility/primary/currentver)
+}
 
-## Version variable.
+
+## Version:
 ver="
 Version 1.5.3
 
-Latest version is $(curl https://raw.githubusercontent.com/0xBooper/BashScriptingUtility/primary/currentver)
+Latest Version: $latestver
 "
 
 [ -z "$1" ] && echo "You must have atleast 1 option. Run bashutil --help for info."
 
 case "$1" in
 	-h|--help) printf '%s\n' "$usage"; exit 0;;
-	-v|--version) printf '%s\n' "$ver"; exit 0;;
+	-v|--version) getlatestver && printf '%s\n' "$ver"; exit 0;;
 	-s|--setup) setup;;
 	*) echo "Unknown option."; exit 1;;
 esac
