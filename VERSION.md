@@ -1,4 +1,4 @@
-# Version 1.5.4-C, uploaded on XXX XX XXXX
+# Version 1.5.4-C, uploaded on 5:26 PM CDT, April 6, 2021
 ## Uploaded by 0xBooper
 
 ### Details of version:
