@@ -1,11 +1,9 @@
-# Version 1.5.4-C, uploaded on 5:26 PM CDT, April 6, 2021
+# Version 1.6, uploaded on 6:01 CDT on Monday, April 26, 2021.
 ## Uploaded by 0xBooper
 
 ### Details of version:
 ```
-	1. Added a check to see if the install worked in the installer.
-	2. (Critical) Fixed uninstaller not working and added a check
-	3. Fixed bashutil always running curl.
+  1. Added ability to use the utility strictly using command-line options.
 ```
 ### Update log:
 ```
@@ -17,7 +15,8 @@
  Version 1.5.2: Made code look better, added a check if the script was made
  correctly.
  Version 1.5.3: Added uninstaller.
- Versiin 1.5.4-C (Critical): Added a check in the installer, fixed uninstaller not working and added a check (critical), and fixed bashutil always running curl.
+ Version 1.5.4-C (Critical): Added a check in the installer, fixed uninstaller not working and added a check (critical), and fixed bashutil always running curl.
+ Version 1.6: 1. Added ability to use the utility strictly using command-line option.
 ```
 
 P.S: Update log starts at version 1.4 because I forgot to start it in earlier versions.
