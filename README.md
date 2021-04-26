@@ -8,7 +8,6 @@ Clone the git repository by doing `git clone https://github.com/0xBooper/BashScr
 
 Cd into the directory of the repository and run the following commands.
 
-`chmod +x install.sh`
 `./install.sh`
 
 Then, follow the onscreen commands.
