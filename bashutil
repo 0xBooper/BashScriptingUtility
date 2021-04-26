@@ -7,7 +7,7 @@ setup() {
     echo "You must give both the filename and directory."
     exit 1
   else
-    read -p "The script named $filename will be made in the directory $directory. Is this correct (Y/n)" userinput
+    read -p "The script named $filename will be made in the directory $directory. Is this correct (Y/n) " userinput
     case $userinput in
       Y|y) echo "Proceeding..."; ;;
       N|n)
@@ -41,9 +41,6 @@ usage=" bashutil [OPTION]...
 
         Options:
 
-		-h or --help: Shows this screen.
-		-v or --version: Shows current version.
-		-s or --setup: Creates and sets up a bash script
 "
 
 ver="
