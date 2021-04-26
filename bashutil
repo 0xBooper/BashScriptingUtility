@@ -2,19 +2,37 @@
 
 # Actual functions
 
-function setup () {
-        cd ~
-        echo "Input the filename without any extension."
-        read FILE
-	FILE+=".sh"
-        touch $FILE
-        echo "#!/bin/bash" > $FILE
-	chmod +x $FILE
-	[ -x "$FILE" ] && echo "File successfully made."; exit 0
-	[ ! -x "$FILE" ] && echo "File wasn't made due to error."; exit 1
+setup() {
+  if [ -z $filename -a -z $directory ]; then
+    echo "You must give both the filename and directory."
+    exit 1
+  else
+    read -p "The script named $filename will be made in the directory $directory. Is this correct (Y/n)" userinput
+    case $userinput in
+      Y|y) echo "Proceeding..."; ;;
+      N|n)
+        echo "Aborting..."
+        exit 0
+        ;;
+      *) echo "Unknown input."; exit 1;;
+    esac
+    
+    echo "Creating script..."
+    cd $directory
+    filename+=".sh"
+    touch $filename
+    echo "Setting script up..."
+    chmod +x $filename
+    echo "#!/bin/bash" > $filename
+    if [ -e $filename ]; then
+      echo "File has successfully been made and setup!"
+      exit 0
+    else
+      echo "File has failed to be made."
+      exit 1
+    fi
+  fi
 }
-
-# Handles options and arguments
 
 ## Usage variable
 usage=" bashutil [OPTION]...
@@ -28,22 +46,34 @@ usage=" bashutil [OPTION]...
 		-s or --setup: Creates and sets up a bash script
 "
 
-## Get version
-function getver () {
-	latestver=$(curl https://raw.githubusercontent.com/0xBooper/BashScriptingUtility/primary/currentver)
-	ver="
-	Version 1.5.3
+ver="
+Version 1.6
+"
 
-	Latest Version: $latestver
-	"
-}
+# Check if there is no input given
+if [ $# = 0 ]; then
+  echo "One option must be given."
+  printf '%s\n' "$usage"
+  exit 1
+fi
 
-
-[ -z "$1" ] && echo "You must have atleast 1 option. Run bashutil --help for info."
-
-case "$1" in
-	-h|--help) printf '%s\n' "$usage"; exit 0;;
-	-v|--version) getver && printf '%s\n' "$ver"; exit 0;;
-	-s|--setup) setup;;
-	*) echo "Unknown option."; exit 1;;
-esac
+# Get options
+while getopts "hvf:d:" optgiven; do
+  case $optgiven in
+    h)
+      printf '%s\n' "$usage"
+      exit 0
+      ;;
+    v)
+      printf '%s\n' "$ver"
+      exit 0
+      ;;
+    f)
+      filename=$OPTARG
+      ;;
+    d) 
+      directory=$OPTARG
+      ;;
+    esac
+done
+setup
