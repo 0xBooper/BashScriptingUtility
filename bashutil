@@ -90,7 +90,7 @@ Latest version: $latestver
 "
 
 getlatestver() {
-  latestver=$(curl --silent https://raw.githubusercontent.com/0xBooper/BashScriptingUtility/primary/latestver)
+  latestver=$(curl https://0xbooper.github.io/projects/bashscriptingutility/latestver)
 }
 
 # Check if there is no input given
