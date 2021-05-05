@@ -1,9 +1,10 @@
-# Version 1.6, uploaded on 6:01 CDT on Monday, April 26, 2021.
+# Version 1.7, uploaded 5:34 P.M. CDT on May 5, 2021.
 ## Uploaded by 0xBooper
 
 ### Details of version:
 ```
-  1. Added ability to use the utility strictly using command-line options.
+  1. Added ability to select your shebang.
+  2. Added a -y option to confirm it.
 ```
 ### Update log:
 ```
@@ -17,6 +18,7 @@
  Version 1.5.3: Added uninstaller.
  Version 1.5.4-C (Critical): Added a check in the installer, fixed uninstaller not working and added a check (critical), and fixed bashutil always running curl.
  Version 1.6: 1. Added ability to use the utility strictly using command-line option.
+ Version 1.7: Added the ability to select your own shebangs, and added a -y option to automatically confirm the script creation.
 ```
 
 P.S: Update log starts at version 1.4 because I forgot to start it in earlier versions.
