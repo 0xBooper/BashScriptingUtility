@@ -1,51 +1,97 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Actual functions
 
+shebangselect () {
+  echo "Shebangs supported:"
+  echo "1) /usr/bin/env bash"
+  echo "2) /usr/bin/bash"
+  echo "3) /bin/bash"
+
+  read -p "Select which bash shebang to use. (Input the number.) " shebangselected
+
+  case $shebangselected in
+    1) shebangtouse="#!/usr/bin/env bash"; ;;
+    2) shebangtouse="#!/usr/bin/bash"; ;;
+    3) shebangtouse="#!/bin/bash"; ;;
+    *) echo "Unknown input."; exit 1; ;;
+  esac
+
+  selectshebang="done"
+  setup
+} 
+
+proceed() {
+  echo "Creating script..."
+  cd $directory
+  filename+=".sh"
+  touch $filename
+  echo "Setting script up..."
+  chmod +x $filename
+  echo "$shebangtouse" > $filename
+  if [ -e $filename ]; then
+    echo "File has successfully been made and setup!"
+    exit 0
+  else
+    echo "File has failed to be made."
+    exit 1
+  fi
+
+}
 setup() {
+  if [ "$selectshebang" == "yes" ]; then
+    shebangselect
+  fi
+
+  if [ -z "$shebangtouse" ]; then
+    shebangtouse="#!/bin/bash"
+  fi
+  
   if [ -z $filename -a -z $directory ]; then
     echo "You must give both the filename and directory."
     exit 1
   else
-    read -p "The script named $filename will be made in the directory $directory. Is this correct (Y/n) " userinput
-    case $userinput in
-      Y|y) echo "Proceeding..."; ;;
-      N|n)
-        echo "Aborting..."
-        exit 0
-        ;;
-      *) echo "Unknown input."; exit 1;;
-    esac
-    
-    echo "Creating script..."
-    cd $directory
-    filename+=".sh"
-    touch $filename
-    echo "Setting script up..."
-    chmod +x $filename
-    echo "#!/bin/bash" > $filename
-    if [ -e $filename ]; then
-      echo "File has successfully been made and setup!"
-      exit 0
-    else
-      echo "File has failed to be made."
-      exit 1
+    if [ -z $confirm ]; then
+      read -p "The script named $filename will be made in the directory $directory. Is this correct (Y/n) " userinput
+      case $userinput in
+        Y|y) echo "Proceeding..."; proceed ;;
+        N|n)
+          echo "Aborting..."
+          exit 0
+          ;;
+        *) echo "Unknown input."; exit 1;;
+      esac
+    elif [ $confirm == "yes" ]; then
+      proceed
     fi
   fi
 }
 
+
 ## Usage variable
 usage=" bashutil [OPTION]...
 
-        Warning: Files will be made in the ~ directory.
+        -h: Shows this.
+        -v: Shows version.
+        -f: Tells the name of the script.
+        -d: Tells the location of the script.
+        -y: Confirms the confirmation question automatically.
+        -s: Tells which bash shebang to use. (Default is /bin/bash)
 
-        Options:
+        ----------------------------------------------------
 
+        Created by 0xBooper, licensed under the MIT License.
 "
 
 ver="
 Version 1.6
+
+Latest version: $latestver
 "
+
+getlatestver() {
+  latestver=$(curl --silent https://raw.githubusercontent.com/0xBooper/BashScriptingUtility/primary/latestver)
+}
 
 # Check if there is no input given
 if [ $# = 0 ]; then
@@ -55,13 +101,14 @@ if [ $# = 0 ]; then
 fi
 
 # Get options
-while getopts "hvf:d:" optgiven; do
+while getopts "shvf:d:y" optgiven; do
   case $optgiven in
     h)
       printf '%s\n' "$usage"
       exit 0
       ;;
     v)
+      getlatestver
       printf '%s\n' "$ver"
       exit 0
       ;;
@@ -71,6 +118,11 @@ while getopts "hvf:d:" optgiven; do
     d) 
       directory=$OPTARG
       ;;
+    y)
+      confirm=yes
+      ;;
+    s)
+      selectshebang=yes
     esac
 done
 setup
